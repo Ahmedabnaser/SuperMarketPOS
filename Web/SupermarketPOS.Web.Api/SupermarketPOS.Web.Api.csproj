@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -8,6 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.7.2" />
+    <PackageReference Include="Scalar.AspNetCore.Swashbuckle" Version="2.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Abstraction\SupermarketPOS.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Application.Abstraction\SupermarketPOS.Application.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Application\SupermarketPOS.Application.csproj" />
   </ItemGroup>
 
 </Project>

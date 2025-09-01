@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Abstraction\SupermarketPOS.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Domain\SupermarketPOS.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

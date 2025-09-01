@@ -1,4 +1,8 @@
 
+using Scalar.AspNetCore;
+using SupermarketPOS.Web.Api;
+using SupermarketPOS.Web.Api.Extentions;
+
 namespace OnionArch
 {
     public class Program
@@ -9,9 +13,7 @@ namespace OnionArch
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+            builder.AddServices();
 
             var app = builder.Build();
 
@@ -19,6 +21,7 @@ namespace OnionArch
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.MapScalarApiReference();
             }
 
             app.UseHttpsRedirection();
