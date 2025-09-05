@@ -379,6 +379,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# Ignore only this appsettings.json
+Web/SupermarketPOS.Web.Api/appsettings.json
 
 # JetBrains Rider
 *.sln.iml
