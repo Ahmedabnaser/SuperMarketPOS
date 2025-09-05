@@ -1,10 +1,20 @@
 ﻿using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
+using Serilog;
 using System.Runtime.CompilerServices;
 
 namespace SupermarketPOS.Web.Api.Extentions
 {
     public static class ServiceCollectionExtentions
     {
+        public static IServiceCollection AddApplicationservices(this IServiceCollection services ,IConfiguration configuration,IWebHostEnvironment webHostBuilder)
+        {
+            AddOpenApiDocumentation(services);
+            return services;
+        }
+
+
+
         public static IServiceCollection AddOpenApiDocumentation(this IServiceCollection services)
         {
             services.AddOpenApi(options =>
@@ -35,11 +45,35 @@ namespace SupermarketPOS.Web.Api.Extentions
             });
             return services;
         }
-        public static IServiceCollection AddApplicationservices(this IServiceCollection services ,IConfiguration configuration,IWebHostEnvironment webHostBuilder)
+        public static void  ConfigScalar(this WebApplication app)
         {
-            AddOpenApiDocumentation(services);
-            return services;
+            if (app.Environment.IsDevelopment())
+            {
+                app.MapOpenApi();
+                app.MapScalarApiReference(
+                    options =>
+                    {
+                        options.WithTitle("my Api")
+                        .WithSidebar(true)
+                        .WithDarkMode(true)
+                        .WithDefaultOpenAllTags(true);
+
+                    }
+
+                    );
+            }
         }
+        public static IHostBuilder AddSerilog(this IHostBuilder builder)
+        {
+            builder.UseSerilog((context, configure) =>
+            {
+                configure.ReadFrom.Configuration(context.Configuration);
+               var Connectionstring= context.Configuration.GetValue<string>("connectionString");
+                Console.WriteLine(Connectionstring);
+            });
+            return builder;
+        }
+
     }
 }
 

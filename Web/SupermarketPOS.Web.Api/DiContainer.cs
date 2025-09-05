@@ -11,10 +11,10 @@ namespace SupermarketPOS.Web.Api
             var configuration = builder.Configuration;
             var services = builder.Services;
             var enviroment= builder.Environment;
+            var host = builder.Host;
             services.AddControllers();
             services.AddApplicationservices(configuration,enviroment);
-            //services.AddOpenApi();
-
+            host.AddSerilog();            
             return builder;
         }
     }
