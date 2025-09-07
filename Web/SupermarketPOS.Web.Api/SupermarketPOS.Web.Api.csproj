@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Scalar.AspNetCore" Version="2.7.2" />
     <PackageReference Include="Scalar.AspNetCore.Swashbuckle" Version="2.7.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
@@ -18,6 +26,8 @@
     <ProjectReference Include="..\..\Core\SupermarketPOS.Abstraction\SupermarketPOS.Abstraction.csproj" />
     <ProjectReference Include="..\..\Core\SupermarketPOS.Application.Abstraction\SupermarketPOS.Application.Abstraction.csproj" />
     <ProjectReference Include="..\..\Core\SupermarketPOS.Application\SupermarketPOS.Application.csproj" />
+    <ProjectReference Include="..\..\Core\SupermarketPOS.Domain\SupermarketPOS.Domain.csproj" />
+    <ProjectReference Include="..\..\Infastructure\SupermarketPOS.persistence\SupermarketPOS.persistence.csproj" />
   </ItemGroup>
 
 </Project>
