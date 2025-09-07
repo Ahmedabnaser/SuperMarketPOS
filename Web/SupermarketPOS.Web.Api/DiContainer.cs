@@ -13,8 +13,10 @@ namespace SupermarketPOS.Web.Api
             var enviroment= builder.Environment;
             var host = builder.Host;
             services.AddControllers();
-            services.AddApplicationservices(configuration,enviroment);
-            host.AddSerilog();            
+            services.RegisterServices(configuration,enviroment);
+            services.AddOpenApiDocumentation();
+            host.AddSerilog();  
+            services.AddDatabase(configuration.GetConnectionString("DefaultConnection"));          
             return builder;
         }
     }

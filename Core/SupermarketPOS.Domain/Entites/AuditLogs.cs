@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SupermarketPOS.Domain.Entites
 {
-    internal class AuditLogs
+    public class AuditLogs
     {
     }
 }

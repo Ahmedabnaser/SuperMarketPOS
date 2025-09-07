@@ -3,6 +3,8 @@ using Scalar.AspNetCore;
 using SupermarketPOS.Web.Api;
 using SupermarketPOS.Web.Api.Extentions;
 using Serilog;
+using SupermarketPOS.persistence.Data;
+using Microsoft.EntityFrameworkCore;
 namespace OnionArch
 {
     public class Program

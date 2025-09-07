@@ -1,15 +1,17 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 using Serilog;
+using SupermarketPOS.persistence.Data;
 using System.Runtime.CompilerServices;
 
 namespace SupermarketPOS.Web.Api.Extentions
 {
     public static class ServiceCollectionExtentions
     {
-        public static IServiceCollection AddApplicationservices(this IServiceCollection services ,IConfiguration configuration,IWebHostEnvironment webHostBuilder)
+        public static IServiceCollection RegisterServices(this IServiceCollection services ,IConfiguration configuration,IWebHostEnvironment webHostBuilder)
         {
-            AddOpenApiDocumentation(services);
+          
             return services;
         }
 
@@ -72,6 +74,19 @@ namespace SupermarketPOS.Web.Api.Extentions
                 Console.WriteLine(Connectionstring);
             });
             return builder;
+        }
+        public static IServiceCollection AddDatabase(this IServiceCollection services,string connectionstring)
+        {
+            if (string.IsNullOrEmpty(connectionstring))
+            {
+                throw new InvalidOperationException("Connection string 'ConnectionStrings' not found or is null/empty.");
+            }
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(connectionstring);
+            });
+            return services;
+
         }
 
     }
