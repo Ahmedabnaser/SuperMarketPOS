@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SupermarketPOS.Domain.Identity;
 
 namespace SupermarketPOS.Domain.Entites
 {
-    internal class InventoryTransactions
+    public class InventoryTransactions : BaseEntity
     {
+        public Guid ProductId { get; set; }
+        public int TransactionType { get; set; }  // 0=PurchaseIn, 1=SaleOut, etc.
+        public int Quantity { get; set; }
+        public Guid BranchId { get; set; }
+        public Guid ReferenceId { get; set; } // SaleId / PurchaseOrderId / ReturnId...
+        public Guid ProcessedBy { get; set; }
+        public DateTime Timestamp { get; set; }
+
+        public Product? Product { get; set; }
+        public Branch? Branch { get; set; }
+        public ApplicationUser? User { get; set; }
     }
 }

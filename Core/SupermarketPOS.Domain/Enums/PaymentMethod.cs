@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SupermarketPOS.Domain.Entites
+namespace SupermarketPOS.Domain.Enums
 {
-    internal class ProductSuppliers
+    public enum PaymentMethod
     {
+        Cash,
+        CreditCard
     }
 }
