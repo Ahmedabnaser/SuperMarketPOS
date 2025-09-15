@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace SupermarketPOS.Domain.Entites
 {
-    public class Branches
+    public class Branch:BaseEntity
     {
-        public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(200)]   
         public string? Name { get; set; }
 
         [MaxLength(500)]

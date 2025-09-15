@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SupermarketPOS.Domain.Entites
 {
-    public class Taxes : BaseEntity
+    public class Discount:BaseEntity
     {
         public required string Name { get; set; }
-        public decimal Rate { get; set; } // e.g., 0.07 for 7%
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; }
+        public decimal Percentage { get; set; } // e.g., 0.10 for 10%
+        public DateTime StartDate { get; set; } = DateTime.UtcNow;
+        public DateTime? EndDate { get; set; }
         public bool IsActive { get; set; } = true;
     }
 }

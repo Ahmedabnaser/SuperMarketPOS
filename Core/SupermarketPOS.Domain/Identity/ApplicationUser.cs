@@ -9,7 +9,7 @@ namespace SupermarketPOS.Domain.Identity
     public required string LastName { get; set; }
         public bool IsActive { get; set; } = true;
         public Guid? BranchId { get; set; }
-    public Branches? Branches { get; set; }
+    public Branch? Branches { get; set; }
     }
 
     public class ApplicationRole : IdentityRole<Guid>

@@ -52,6 +52,7 @@ namespace SupermarketPOS.Web.Api.Extentions
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseHsts();
                 app.MapScalarApiReference(
                     options =>
                     {
