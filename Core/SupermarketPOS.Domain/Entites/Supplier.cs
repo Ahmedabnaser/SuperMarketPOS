@@ -9,15 +9,18 @@ namespace SupermarketPOS.Domain.Entites
 {
     public class Supplier:BaseEntity
     {
-      
+
+        [Required(ErrorMessage ="The Name Field Is Required")]
+        
         public string Name { get; set; }
         public string? Email { get; set; }
-        [Required]
+        [Required(ErrorMessage ="The phone number field is Required")]
         [MaxLength(11), MinLength(11)]
+        
         public string Phone { get; set; }
         public string? Address { get; set; }
 
-        public ICollection<ProductSupplier>? ProductSupplier { get; set; }
-        public ICollection<PurchaseOrder>? PurchaseOrder { get; set; }
+        public ICollection<ProductSupplier>? ProductSuppliers { get; set; }
+        public ICollection<PurchaseOrder>? PurchaseOrders { get; set; }
     }
 }

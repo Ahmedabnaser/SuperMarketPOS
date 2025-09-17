@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SupermarketPOS.Domain.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace SupermarketPOS.Domain.Entites
 
         [MaxLength(100)]
         public string? City { get; set; }
+
+        public ICollection<Sale>? Sales { get; set; }
+
+        public ICollection<ApplicationUser>?Users { get; set; }
+        public ICollection<Shifts> shifts {  get; set; }
+
 
     }
 }

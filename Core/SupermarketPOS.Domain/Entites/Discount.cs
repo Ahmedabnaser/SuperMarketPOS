@@ -13,5 +13,7 @@ namespace SupermarketPOS.Domain.Entites
         public DateTime StartDate { get; set; } = DateTime.UtcNow;
         public DateTime? EndDate { get; set; }
         public bool IsActive { get; set; } = true;
+
+        public ICollection<Sale> Sales { get; set; }
     }
 }

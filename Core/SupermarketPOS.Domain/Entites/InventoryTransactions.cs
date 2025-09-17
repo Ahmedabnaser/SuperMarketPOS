@@ -9,7 +9,8 @@ namespace SupermarketPOS.Domain.Entites
 {
     public class InventoryTransactions : BaseEntity
     {
-        public Guid ProductId { get; set; }
+        public Guid? UserId { get; set; }//Foreign Key to User
+        public Guid? ProductId { get; set; }// Foreign key to Product
         public int TransactionType { get; set; }  // 0=PurchaseIn, 1=SaleOut, etc.
         public int Quantity { get; set; }
         public Guid BranchId { get; set; }

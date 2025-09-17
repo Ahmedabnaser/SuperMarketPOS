@@ -17,7 +17,7 @@ namespace SupermarketPOS.Domain.Entites
         public DateTime? UpdatedAt { get; set; }
         public bool IsActive { get; set; } = true;
         // Navigation property for related Sales
-        public ICollection<Sale> Sale { get; set; } = new List<Sale>();
+        public ICollection<Sale> Sales { get; set; } = new List<Sale>();
 
     }
 }
