@@ -20,6 +20,6 @@ namespace SupermarketPOS.Domain.Entites
         public string? Notes { get; set; }
 
         public Supplier? Supplier { get; set; }
-        public ICollection<PurchaseOrderItem>? Items { get; set; }
+        public ICollection<PurchaseOrderItem>? PurchaseOrderItems { get; set; }
     }
 }
