@@ -7,7 +7,7 @@ using SupermarketPOS.Domain.Identity;
 
 namespace SupermarketPOS.Domain.Entites
 {
-    public class Shifts
+    public class Shifts:BaseEntity
     {
         public Guid UserId { get; set; }
         public Guid BranchId { get; set; }

@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SupermarketPOS.Domain.Configurations;
 using SupermarketPOS.Domain.Entites;
 using SupermarketPOS.Domain.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+
 
 namespace SupermarketPOS.persistence.Data
 {
@@ -16,6 +14,14 @@ namespace SupermarketPOS.persistence.Data
             : base(options)
         {
 
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            
+            Assembly domainAssembly = typeof(CustomerConfiguration).Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(domainAssembly);
         }
 
     public DbSet<AuditLogs> AuditLogs { get; set; }

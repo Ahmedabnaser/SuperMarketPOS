@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SupermarketPOS.Domain.Configurations
 {
-    public class SupllierConfiguration:IEntityTypeConfiguration<Supplier>
+    public class SupplierConfiguration:IEntityTypeConfiguration<Supplier>
     {
         public void Configure(EntityTypeBuilder<Supplier> Builder)
         {

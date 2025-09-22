@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SupermarketPOS.persistence.Data;
 
@@ -11,9 +12,11 @@ using SupermarketPOS.persistence.Data;
 namespace SupermarketPOS.persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250921021212_ApplyConfiguartion")]
+    partial class ApplyConfiguartion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,8 +135,7 @@ namespace SupermarketPOS.persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Action")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletedOnUtc")
                         .HasColumnType("datetime2");
@@ -151,8 +153,7 @@ namespace SupermarketPOS.persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TableName")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
@@ -164,7 +165,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Auditlogs", (string)null);
+                    b.ToTable("AuditLogs");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Branch", b =>
@@ -940,7 +941,7 @@ namespace SupermarketPOS.persistence.Migrations
                     b.HasOne("SupermarketPOS.Domain.Identity.ApplicationUser", "User")
                         .WithMany("AuditLogs")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("User");
