@@ -3,7 +3,7 @@ namespace SupermarketPOS.Domain.Entites
 {
     public class BaseEntity
     {
-        public int Id { get; private set; }
+    public Guid Id { get; private set; }
         public bool IsDeleted { get; private set; }
 
         public DateTime? DeletedOnUtc { get; private set; }

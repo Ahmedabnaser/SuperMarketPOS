@@ -2,15 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SupermarketPOS.Domain.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SupermarketPOS.Domain.Configurations
 {
-    public class CustonmerConfiguration:IEntityTypeConfiguration<Customer>
+    public class CustomerConfiguration:IEntityTypeConfiguration<Customer>
     {
         public void  Configure(EntityTypeBuilder<Customer> builder) {
 

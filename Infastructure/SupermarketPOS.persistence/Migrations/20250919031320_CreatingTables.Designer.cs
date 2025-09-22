@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SupermarketPOS.persistence.Data;
 
@@ -11,9 +12,11 @@ using SupermarketPOS.persistence.Data;
 namespace SupermarketPOS.persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250919031320_CreatingTables")]
+    partial class CreatingTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,8 +135,7 @@ namespace SupermarketPOS.persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Action")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletedOnUtc")
                         .HasColumnType("datetime2");
@@ -151,8 +153,7 @@ namespace SupermarketPOS.persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TableName")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
@@ -164,7 +165,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Auditlogs", (string)null);
+                    b.ToTable("AuditLogs");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Branch", b =>
@@ -254,8 +255,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnOrder(1);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -940,7 +940,7 @@ namespace SupermarketPOS.persistence.Migrations
                     b.HasOne("SupermarketPOS.Domain.Identity.ApplicationUser", "User")
                         .WithMany("AuditLogs")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -965,13 +965,11 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasOne("SupermarketPOS.Domain.Entites.Product", "Product")
                         .WithMany("InventoryTransactions")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("SupermarketPOS.Domain.Identity.ApplicationUser", "User")
                         .WithMany("InventoryTransactions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Branch");
 
@@ -1056,7 +1054,7 @@ namespace SupermarketPOS.persistence.Migrations
                     b.HasOne("SupermarketPOS.Domain.Entites.Branch", "Branch")
                         .WithMany("Sales")
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SupermarketPOS.Domain.Identity.ApplicationUser", "Cashier")
@@ -1067,19 +1065,18 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasOne("SupermarketPOS.Domain.Entites.Customer", "Customer")
                         .WithMany("Sales")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("SupermarketPOS.Domain.Entites.Discount", "Discount")
                         .WithMany("Sales")
                         .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SupermarketPOS.Domain.Entites.Tax", "Tax")
                         .WithMany("Sales")
                         .HasForeignKey("TaxId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Branch");
@@ -1098,7 +1095,7 @@ namespace SupermarketPOS.persistence.Migrations
                     b.HasOne("SupermarketPOS.Domain.Entites.Product", "Product")
                         .WithMany("SaleItems")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SupermarketPOS.Domain.Entites.Sale", "Sale")
@@ -1117,13 +1114,13 @@ namespace SupermarketPOS.persistence.Migrations
                     b.HasOne("SupermarketPOS.Domain.Entites.Branch", "Branch")
                         .WithMany("shifts")
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SupermarketPOS.Domain.Identity.ApplicationUser", "User")
                         .WithMany("shifts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Branch");
@@ -1135,8 +1132,7 @@ namespace SupermarketPOS.persistence.Migrations
                 {
                     b.HasOne("SupermarketPOS.Domain.Entites.Branch", "Branches")
                         .WithMany("Users")
-                        .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("BranchId");
 
                     b.Navigation("Branches");
                 });
