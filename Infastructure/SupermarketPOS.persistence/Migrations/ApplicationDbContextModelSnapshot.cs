@@ -202,7 +202,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Category", b =>
@@ -231,7 +231,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Customer", b =>
@@ -276,7 +276,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Discount", b =>
@@ -309,7 +309,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Discounts");
+                    b.ToTable("Discounts", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.InventoryTransactions", b =>
@@ -356,7 +356,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("InventoryTransactions");
+                    b.ToTable("InventoryTransactions", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Payment", b =>
@@ -395,7 +395,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Product", b =>
@@ -448,7 +448,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.ProductSupplier", b =>
@@ -481,7 +481,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("ProductSuppliers");
+                    b.ToTable("ProductSuppliers", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.PurchaseOrder", b =>
@@ -522,7 +522,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("PurchaseOrders");
+                    b.ToTable("PurchaseOrders", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.PurchaseOrderItem", b =>
@@ -558,7 +558,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("PurchaseOrderId");
 
-                    b.ToTable("PurchaseOrderItems");
+                    b.ToTable("PurchaseOrderItems", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Sale", b =>
@@ -621,7 +621,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("TaxId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sales", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.SaleItem", b =>
@@ -660,7 +660,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("SaleItems");
+                    b.ToTable("SaleItems", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Shifts", b =>
@@ -702,7 +702,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Shifts");
+                    b.ToTable("Shifts", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Supplier", b =>
@@ -734,7 +734,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Tax", b =>
@@ -767,7 +767,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Taxes");
+                    b.ToTable("Taxes", (string)null);
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Identity.ApplicationRole", b =>

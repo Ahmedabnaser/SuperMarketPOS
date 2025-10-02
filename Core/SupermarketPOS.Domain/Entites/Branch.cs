@@ -30,7 +30,7 @@ namespace SupermarketPOS.Domain.Entites
         public ICollection<Sale>? Sales { get; set; }
 
         public ICollection<ApplicationUser>?Users { get; set; }
-        public ICollection<Shifts> shifts {  get; set; }
+        public ICollection<Shifts> shifts { get; set; } = new List<Shifts>();
 
 
     }

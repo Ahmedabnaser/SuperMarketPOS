@@ -16,7 +16,7 @@ namespace SupermarketPOS.Web.Api
             services.RegisterServices(configuration,enviroment);
             services.AddOpenApiDocumentation();
             host.AddSerilog();  
-            services.AddDatabase(configuration.GetConnectionString("DefaultConnection"));          
+            services.AddDatabase(configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("DefaultConnection string not found"));          
             return builder;
         }
     }

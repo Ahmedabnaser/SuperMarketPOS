@@ -11,9 +11,9 @@ namespace SupermarketPOS.Domain.Identity
         public Guid? BranchId { get; set; }
         public Branch? Branches { get; set; }
 
-        public ICollection<Shifts>shifts { get; set; }
-        public ICollection<AuditLogs> AuditLogs { get; set; }
-        public ICollection<InventoryTransactions> InventoryTransactions { get; set; }
+        public ICollection<Shifts> shifts { get; set; } = new List<Shifts>();
+        public ICollection<AuditLogs> AuditLogs { get; set; } = new List<AuditLogs>();
+        public ICollection<InventoryTransactions> InventoryTransactions { get; set; } = new List<InventoryTransactions>();
     }
 
     public class ApplicationRole : IdentityRole<Guid>
