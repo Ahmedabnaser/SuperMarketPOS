@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Scalar.AspNetCore;
 using Serilog;
+using SupermarketPOS.Domain.Identity;
 using SupermarketPOS.persistence.Data;
 using System.Runtime.CompilerServices;
 
@@ -11,7 +13,8 @@ namespace SupermarketPOS.Web.Api.Extentions
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services ,IConfiguration configuration,IWebHostEnvironment webHostBuilder)
         {
-          
+            services.AddTransient<IdentityDataSeeder>();
+            services.AddIdentity();
             return services;
         }
 
@@ -88,6 +91,31 @@ namespace SupermarketPOS.Web.Api.Extentions
             });
             return services;
 
+        }
+        public static IServiceCollection AddIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+            return services;
         }
 
     }
