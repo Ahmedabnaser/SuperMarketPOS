@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 using SupermarketPOS.Domain.Entites;
 namespace SupermarketPOS.Domain.Identity
 {
@@ -18,6 +19,22 @@ namespace SupermarketPOS.Domain.Identity
 
     public class ApplicationRole : IdentityRole<Guid>
     {
+        // Parameterless constructor required by EF Core for materialization
+        public ApplicationRole() : base()
+        {
+        }
+    [NotMapped]
+    public string? _roleName { get; private set; }
+        // Keep a constructor for convenience; call the base IdentityRole constructor
+        public ApplicationRole(string role) : base(role)
+        {
+            // Optionally store the role name locally or use Description to annotate
+            // _roleName is not necessary if base.Name is set, but keep for compatibility
+            _roleName = role;
+        }
+
+   
+
         public required string Description { get; set; }
 
     }
