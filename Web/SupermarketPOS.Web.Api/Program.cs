@@ -22,28 +22,7 @@ namespace OnionArch
                 var app = builder.Build();
 
                 // Apply migrations and run seeders in a scope
-                using (var scope = app.Services.CreateScope())
-                {
-                    var services = scope.ServiceProvider;
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    try
-                    {
-                        var db = services.GetRequiredService<ApplicationDbContext>();
-                        logger.LogInformation("Applying pending migrations (if any)");
-                        await db.Database.MigrateAsync();
-
-                        var seeder = services.GetRequiredService<IdentityDataSeeder>();
-                        await seeder.SeedRolseAndAdminsAsync(services);
-                        //await seeder.SeedStaff();
-                        logger.LogInformation("Database seeding completed.");
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
-                        throw;
-                    }
-                }
-
+                await app.SeedingAdmingAndRoles();
                 // Configure the HTTP request pipeline.
                 app.ConfigScalar();
 
