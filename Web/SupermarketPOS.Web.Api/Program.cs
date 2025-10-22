@@ -13,7 +13,7 @@ namespace OnionArch
         {
             Log.Information("Starting SupermarketPOS Web API");
             try
-            {
+            {   
                 var builder = WebApplication.CreateBuilder(args);
 
                 // Add services to the container.
@@ -31,7 +31,7 @@ namespace OnionArch
                 app.UseAuthorization();
 
                 app.UseSerilogRequestLogging();
-                app.MapControllers();
+                app.MapControllers();   
 
                 app.Run();
             }
