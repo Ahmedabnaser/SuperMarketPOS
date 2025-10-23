@@ -40,6 +40,7 @@ namespace SupermarketPOS.persistence.Data
     public DbSet<Shifts> Shifts { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<Tax> Taxes { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         
     }

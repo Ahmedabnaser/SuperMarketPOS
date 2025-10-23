@@ -202,7 +202,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Category", b =>
@@ -231,7 +231,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Customer", b =>
@@ -276,7 +276,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Discount", b =>
@@ -309,7 +309,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Discounts", (string)null);
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.InventoryTransactions", b =>
@@ -356,7 +356,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("InventoryTransactions", (string)null);
+                    b.ToTable("InventoryTransactions");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Payment", b =>
@@ -395,7 +395,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Product", b =>
@@ -448,7 +448,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.ProductSupplier", b =>
@@ -481,7 +481,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("ProductSuppliers", (string)null);
+                    b.ToTable("ProductSuppliers");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.PurchaseOrder", b =>
@@ -522,7 +522,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("PurchaseOrders", (string)null);
+                    b.ToTable("PurchaseOrders");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.PurchaseOrderItem", b =>
@@ -558,7 +558,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("PurchaseOrderId");
 
-                    b.ToTable("PurchaseOrderItems", (string)null);
+                    b.ToTable("PurchaseOrderItems");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Sale", b =>
@@ -621,7 +621,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("TaxId");
 
-                    b.ToTable("Sales", (string)null);
+                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.SaleItem", b =>
@@ -660,7 +660,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("SaleItems", (string)null);
+                    b.ToTable("SaleItems");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Shifts", b =>
@@ -702,7 +702,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Shifts", (string)null);
+                    b.ToTable("Shifts");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Supplier", b =>
@@ -734,7 +734,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Entites.Tax", b =>
@@ -767,7 +767,7 @@ namespace SupermarketPOS.persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Taxes", (string)null);
+                    b.ToTable("Taxes");
                 });
 
             modelBuilder.Entity("SupermarketPOS.Domain.Identity.ApplicationRole", b =>
@@ -882,6 +882,42 @@ namespace SupermarketPOS.persistence.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("SupermarketPOS.Domain.Identity.RefreshToken", b =>
+                {
+                    b.Property<Guid>("RefreshTokenId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedByIp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiresOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReplacedByToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RevokedByIp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RevokedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RefreshTokenId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
